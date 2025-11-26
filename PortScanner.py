@@ -26,7 +26,7 @@ print(f"Scan Target: {targetIP}")
 print(f"Scanning started: {datetime.now()}")
 
 try:
-    for port in range(start_port, end_port):
+    for port in range(start_port, end_port + 1):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(3)
         result = sock.connect_ex((targetIP, port))
@@ -44,4 +44,5 @@ except socket.gaierror:
     exit()
 
 except socket.error:
+
     print("Couldn't connect to the server.")
