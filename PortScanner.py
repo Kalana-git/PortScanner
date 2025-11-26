@@ -28,11 +28,12 @@ print(f"Scanning started: {datetime.now()}")
 try:
     for port in range(start_port, end_port + 1):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(3)
+        sock.settimeout(1)
+
         result = sock.connect_ex((targetIP, port))
 
         if result == 0:
-            print("Port {port} is open.")
+            print("Port {} is open.".format(port))
 
         sock.close()
 except KeyboardInterrupt:
@@ -44,5 +45,4 @@ except socket.gaierror:
     exit()
 
 except socket.error:
-
     print("Couldn't connect to the server.")
